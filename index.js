@@ -30,6 +30,10 @@ mongoose
       duration: 20,
       creator: 'Mattheus'
     })
+    Recipe.insertMany(data)
+    .then(()=> {
+      console.log("Added All The Recipes")
+    })
   })
   .catch(error => {
     console.error('Error connecting to the database', error);

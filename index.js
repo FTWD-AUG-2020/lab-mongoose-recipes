@@ -33,7 +33,9 @@ mongoose
     Recipe.insertMany(data)
     .then(()=> {
       console.log("Added All The Recipes")
+      Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}, {new: true}).then((recipe)=> {console.log('has been changed', recipe)});
     })
+    
   })
   .catch(error => {
     console.error('Error connecting to the database', error);

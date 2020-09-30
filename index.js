@@ -21,6 +21,24 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    Recipe.create({
+      title: 'Mashed potatoes',
+      level: 'Easy Peasy',
+      ingredients: ['potatoes', 'butter', 'salt', 'pepper', 'garlic', 'milk'],
+      cuisine: 'Americana',
+      dishType: 'main_course',
+      duration: 20,
+      creator: 'Mattheus'
+    })
+    Recipe.insertMany(data)
+      .then(() => {
+        console.log("Added All The Recipes")
+        Recipe.findOneAndUpdate({ title: "Rigatoni alla Genovese" }, { duration: 100 }, { new: true }).then((recipe) => { console.log('has been changed', recipe) });
+        Recipe.deleteOne({ title: 'Orange and Milk-Braised Pork Carnitas' }).then(() => {
+          console.log('deletedThePork')
+        })
+      })
+
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
